@@ -8,6 +8,8 @@ Algunas páginas de Wordpress, Joomla, Drupal, etc. no ofrecen información de l
 Las caracterísiticas de nuestro dataset serán los archivos de los que se compone el CMS WordPress, no todos.
 
 Si nos vamos a la web: https://codex.wordpress.org/Current_events veremos los archivos que cambiaron en cada versión.
+
+"""
 Ej:
 En la 4.7.5 se modificaron los siguientes archivos:
 wp-includes/class-wp-customize-manager.php
@@ -23,6 +25,7 @@ wp-admin/js/updates.js
 wp-admin/js/customize-controls.js
 wp-admin/js/updates.min.js
 wp-admin/js/customize-controls.min.js
+"""
 
 Si nos descargamos esa versión y la anterior 4.7.4 y abrimos el archivo wp-includes/js/plupload/handlers.js:
 
