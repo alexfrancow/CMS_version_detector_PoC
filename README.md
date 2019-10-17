@@ -29,7 +29,7 @@ wp-admin/js/customize-controls.min.js
 
 Si nos descargamos esa versión y la anterior 4.7.4 y abrimos el archivo wp-includes/js/plupload/handlers.js:
 
-[IMAGE]
+![Image of Yaktocat](images/1.png)
 
 Vemos que las líneas cambian en ese archivo. Habría que descargar el listado total de archivos que han sido modificados o añadidos de sde la versión 0 hasta la última y comprobar cuantas líneas tienen los archivos .js o .css
 
