@@ -36,8 +36,11 @@ Vemos que las líneas cambian en ese archivo. Habría que descargar el listado t
 Con python en lugar de contar las líneas vamos a contar los bytes de cada archivo .js o .css, solo los del lado del cliente ya que los .php no los vamos a poder visitar.
 
 Primera prueba emetel.net vs be-sec.net:
+
+```
 https://emetel.net/ versión 4.9.11
 https://www.be-sec.net/ versión 5.0.6
+```
 
 ![Image of Yaktocat](images/2.png)
 
