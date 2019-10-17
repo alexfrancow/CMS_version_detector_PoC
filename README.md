@@ -1,6 +1,6 @@
 # ML-wpver
 
-Algunas páginas de Wordpress, Joomla, Drupal, etc. no ofrecen información de la versión por ningún lado, ni con herramientas somos capaces de sacar una versión, con esta herramienta gracias a los algoritmos de Deep Learning se podrá detectar una versión de cualquier CMS en base a una serie de clases.
+Algunas páginas de Wordpress, Joomla, Drupal, etc. no ofrecen información de la versión por ningún lado, ni con herramientas somos capaces de sacar una versión, con esta herramienta gracias a los algoritmos de Machine Learning se podrá detectar una versión de cualquier CMS en base a una serie de clases.
 
 
 ## Dataset
