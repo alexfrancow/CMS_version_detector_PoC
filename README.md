@@ -39,31 +39,36 @@ Primera prueba emetel.net vs be-sec.net:
 https://emetel.net/ versión 4.9.11
 https://www.be-sec.net/ versión 5.0.6
 
-[IMAGE]
+![Image of Yaktocat](images/2.png)
 
 Haremos una comprobación más grande antes de seguir:
 En estas URLs tenemos 3 versiones que son iguales, y justamente da el mismo número de bytes en sus archivos:
 
-[IMAGE]
-
+![Image of Yaktocat](images/3.png)
+![Image of Yaktocat](images/4.png)
 
 Dado que la API de wappalyzer no saca muy bien las versiones, las sacaremos a mano buscando en el source code la etiqueta <meta> que contiene la versión usada:
 
 
 Hay una web llamada PublicWWW que nos permite buscar determinado código en las webs, es decir podremos buscar webs que tengan una determinada versión de WordPress:
 
-[IMAGE]
+![Image of Yaktocat](images/5.png)
 
 
 Una vez descargadas todas las URLs tendremos el siguiente numero de webs para cada versión:
 
+![Image of Yaktocat](images/6.png)
+
 Teniendo un total de 172.394 urls las cuales exportaremos a un csv:
 
-[IMAGE]
+![Image of Yaktocat](images/7.png)
+![Image of Yaktocat](images/8.png)
 
 Para escanear todos esos sitios web vamos a necesitar usar multiprocesado, sino vamos a tardar mucho:
 
 Ejemplo de 20 webs:
+
+
 
 ## Multi-Class Classification
 
