@@ -75,7 +75,7 @@ La librería scikit learn ofrece una serie de algoritmos para Multi-Class classi
 -	Random Forest
 
 
-## Training process
+## Dataset generation
 
 
 Crearemos una función para el multiprocesado de URLS, sino será infinito este proceso.
@@ -119,7 +119,19 @@ urls = df['URLs'].sample(n=100000)
 create_dataset_multiple(urls)
 ```
 
-Una vez creado el dataset, entrenaremos a nuestro modelo.
+## Training process
+
+Separaremos nuestro dataset en train(80%) y test(20%):
+
+```python
+# Using Skicit-learn to split data into training and testing sets
+from sklearn.model_selection import train_test_split
+
+# Split the data into training and testing sets
+train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size = 0.25, random_state = 42)
+```
+
+Una vez separado el dataset, entrenaremos a nuestro modelo.
 
 ```python
 from sklearn.ensemble import RandomForestRegressor
