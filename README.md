@@ -45,10 +45,10 @@ Haremos una comprobación más grande antes de seguir:
 En estas URLs tenemos 3 versiones que son iguales, y justamente da el mismo número de bytes en sus archivos:
 
 ![Image of Yaktocat](images/3.png)
-![Image of Yaktocat](images/4.png)
 
 Dado que la API de wappalyzer no saca muy bien las versiones, las sacaremos a mano buscando en el source code la etiqueta <meta> que contiene la versión usada:
 
+![Image of Yaktocat](images/4.png)
 
 Hay una web llamada PublicWWW que nos permite buscar determinado código en las webs, es decir podremos buscar webs que tengan una determinada versión de WordPress:
 
