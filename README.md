@@ -98,12 +98,12 @@ def get_bytes(url):
     return bytess
 
 def create_dataset(url):
-...
+    ...
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             bytess = list(executor.map(get_bytes, urlypath))
             for b in bytess:
                 main_array.append(b)      
-...
+    ...
 
 def create_dataset_multiple(urls):
     global count_iter 
