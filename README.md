@@ -118,3 +118,26 @@ df = pd.read_csv('final.csv')
 urls = df['URLs'].sample(n=100000) 
 create_dataset_multiple(urls)
 ```
+
+Una vez creado el dataset, entrenaremos a nuestro modelo.
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+
+# Instantiate model with 1000 decision trees
+rf = RandomForestRegressor(n_estimators = 1000, random_state = 42)
+
+# Train the model on training data
+rf.fit(train_features, train_labels);
+```
+
+Y haremos las predicciones:
+
+```python
+# Use the forest's predict method on the test data
+predictions = rf.predict(test_features)
+
+# Calculate the absolute errors
+errors = abs(predictions - test_labels)# Print out the mean absolute error (mae)
+print('Mean Absolute Error:', round(np.mean(errors), 2), 'degrees.')
+```
