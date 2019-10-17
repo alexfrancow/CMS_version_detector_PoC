@@ -76,11 +76,11 @@ La librería scikit learn ofrece una serie de algoritmos para Multi-Class classi
 
 
 ## Training process
-https://realpython.com/python-concurrency/
+
 
 Crearemos una función para el multiprocesado de URLS, sino será infinito este proceso.
 
-Como esto es un programa I/O, es decir el cuello de botella se basará en lo que tarde en visitar esa página y no dependerá tanto del procesador usaremos el método de threading:
+Como esto es un programa I/O, es decir el cuello de botella se basará en lo que tarde en visitar esa página y no dependerá tanto del procesador usaremos el método de threading (https://realpython.com/python-concurrency/):
 
 ![Image of Yaktocat](images/10.png)
 
