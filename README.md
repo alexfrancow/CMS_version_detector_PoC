@@ -64,13 +64,8 @@ Teniendo un total de 172.394 urls las cuales exportaremos a un csv:
 ![Image of Yaktocat](images/7.png)
 ![Image of Yaktocat](images/8.png)
 
-Para escanear todos esos sitios web vamos a necesitar usar multiprocesado, sino vamos a tardar mucho:
 
-Ejemplo de 20 webs:
-
-
-
-## Multi-Class Classification
+## Multi-Class Classification algorithms
 
 Del mismo modo que la clasificación binaria (binary classification) implica predecir si algo es de una de dos clases (por ejemplo, "negro" o "blanco", "muerto" o "vivo", etc.), los problemas multiclase (Multi-class classification) implican clasificar algo en una de las N clases (por ejemplo, "rojo", "Blanco" o "azul", etc.)
 
@@ -79,3 +74,47 @@ La librería scikit learn ofrece una serie de algoritmos para Multi-Class classi
 -	K-nearest-neighbours (KNN).
 -	Random Forest
 
+
+## Training process
+https://realpython.com/python-concurrency/
+
+Crearemos una función para el multiprocesado de URLS, sino será infinito este proceso.
+
+Como esto es un programa I/O, es decir el cuello de botella se basará en lo que tarde en visitar esa página y no dependerá tanto del procesador usaremos el método de threading:
+
+![Image of Yaktocat](images/10.png)
+
+```python
+def get_bytes(url):
+    session = get_session()
+    try:
+        with session.get(url, verify=False, timeout=5) as response:
+            if response.status_code == 200:
+                bytess = len(response.content)
+            elif response.status_code != 200:
+                bytess = 0
+    except:
+        bytess = 0
+    return bytess
+
+def create_dataset(url):
+...
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+            bytess = list(executor.map(get_bytes, urlypath))
+            for b in bytess:
+                main_array.append(b)      
+...
+
+def create_dataset_multiple(urls):
+    global count_iter 
+    count_iter = -12
+    with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+        df = pd.concat(executor.map(create_dataset, urls))
+    return df
+```
+
+```python
+df = pd.read_csv('final.csv')
+urls = df['URLs'].sample(n=100000) 
+create_dataset_multiple(urls)
+```
