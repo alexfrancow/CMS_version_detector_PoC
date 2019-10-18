@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 import pandas as pd
 import concurrent.futures
 import requests
@@ -6,17 +7,9 @@ import time
 from multiprocessing import Pool
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-from termcolor import colored 
+from termcolor import colored
 
 
-'''
-The operating system is in control of when your task gets interrupted and another task starts, 
-any data that is shared between the threads needs to be protected, or thread-safe. 
-Unfortunately requests.Session() is not thread-safe.
-Exists something called thread local storage. 
-Threading.local() creates an object that look like a global but is specific to each individual thread.
-# https://realpython.com/python-concurrency/
-'''
 threadLocal = threading.local()
 
 
@@ -44,8 +37,8 @@ def get_wp_version(url):
         return version
     except:
         return "Null"
-    
-    
+
+
 def get_wp_manual_version(url):
     session = get_session()
     try:
@@ -62,7 +55,7 @@ def get_wp_manual_version(url):
                 return "Null"
     except:
         return "Null"
-    
+
 
 def get_bytes(url):
     session = get_session()
@@ -78,29 +71,37 @@ def get_bytes(url):
 
 
 def create_dataset_to_predict(url):
+    df = pd.read_csv('files.csv').drop(columns="Unnamed: 0")
+    client = df['Files'].values
+
     main_array = []
     bytess = []
     time_scan = time.time()
     session = get_session()
     version = get_wp_manual_version(url)
     urlypath = []
-    for c in client:  
+    for c in client:
         if "Version" in c:
             continue
         urlypath.append(url+c)
-        
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
         bytess = list(executor.map(get_bytes, urlypath))
         for b in bytess:
-            main_array.append(b)  
-                
-    main_array.append(version) 
+            main_array.append(b)
+
+    main_array.append(version)
+    print(main_array)
+    df = pd.DataFrame(columns=client)
     if len(main_array) == 46:
         try:
             df.loc[len(df)] = main_array
-            return df
+            X = df.iloc[:, 0:-1].values
+            return X
+
         except:
             print(url)
+
  
 def create_dataset(url):
     ##clear_output()

@@ -1,3 +1,4 @@
+import sys
 from functions import *
 import requests
 #from bs4 import BeautifulSoup
@@ -16,9 +17,7 @@ from sklearn.externals import joblib
 from sklearn.model_selection import cross_val_score
 from sklearn import metrics
 from sklearn.ensemble import RandomForestClassifier
-
-
-
+import os.path
 
 
 
@@ -60,15 +59,14 @@ if args.method == "train":
 
 elif args.method == "test":
 	if not args.url:
+		print("Introduce an url")
 		sys.exit()
 
-	if not "randomforestmodel.pkl":
+	if not os.path.exists("randomforestmodel.pkl"):
 		sys.exit()
 
-	model = load('randomforestmodel.pkl')
-	df = pd.DataFrame(columns=client)
-	create_dataset_to_predict(args.url)
-	X = df.iloc[:, 0:-1].values
+	model = joblib.load('randomforestmodel.pkl')
+	X = create_dataset_to_predict(args.url)
 	model.predict(X)
 
 else:
