@@ -4,7 +4,7 @@ Some pages made in Wordpress, Joomla, Drupal, etc. do not offer version informat
 
 ⚠️ For now it only works with WordPress pages.
 
-📈 ACC: 89% (With 20.000 URLs dataset and Random Forest algorithm)
+📈 ACC: 89% (With 20.000 URLs dataset and Random Forest Classifier)
 
 ```
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
