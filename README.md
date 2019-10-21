@@ -85,7 +85,7 @@ Una vez descargadas todas las URLs tendremos el siguiente numero de webs para ca
 Teniendo un total de 172.394 urls las cuales exportaremos a un csv:
 
 ![Image of Yaktocat](images/7.png)
-![Image of Yaktocat](images/8.png)
+
 
 
 ## Multi-Class Classification algorithms
