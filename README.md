@@ -74,11 +74,11 @@ There is a website called PublicWWW that allows us to search for certain code on
 
 Once all the URLs have been downloaded, we will have the following number of websites for each version:
 
-<p align="center"><img height="500" width="250" src="images/6.png" /></p>
+<p align="center"><img height="500" width="400" src="images/6.png" /></p>
 
 Having a total of 172,394 urls which we will export to a csv:
 
-<p align="center"><img src="images/7.png" /></p>
+<p align="center"><img height="500" width="500"  src="images/7.png" /></p>
 
 
 ## Multi-Class Classification algorithms
