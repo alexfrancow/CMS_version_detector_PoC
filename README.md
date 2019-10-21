@@ -6,6 +6,16 @@ Some pages made in Wordpress, Joomla, Drupal, etc. do not offer version informat
 
 📈 ACC: 89% (With 20.000 URLs dataset and Random Forest algorithm)
 
+```
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+                       max_depth=None, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=42, verbose=0,
+                       warm_start=False)
+```
+
 ## Quick start
 
 We use the model randomforestmodel.pkl:
