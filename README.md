@@ -187,7 +187,7 @@ We make the predictions:
 ```python
 # Creamos un dataframe en blanco
 df = pd.DataFrame(columns=client)
-create_dataset_to_predict("https://www.cloudways.com/blog/creating-custom-page-template-in-wordpress/")
+create_dataset_to_predict("https://emetel.net/")
 X = df.iloc[:, 0:-1].values
 model.predict(X)
 ```
