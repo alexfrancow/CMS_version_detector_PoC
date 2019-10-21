@@ -16,7 +16,7 @@ Para generar un nuevo dataset:
 $ python3 ml-wpver.py -gd 10000
 ```
 
-Para generar y entrenar un nuevo modelo (se va a llamar randomforestmodel.pkl):
+Para generar y entrenar un nuevo modelo (se va a llamar randomforestmodel.pkl) y especificamos el dataset:
 
 ```
 $ python3 ml-wpver.py -m train .csv
