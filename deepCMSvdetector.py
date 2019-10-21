@@ -46,12 +46,12 @@ if args.gendataset:
 	start = time.time()
 	print("Creating dataset:")
 	print("Checking URLs:")
-	create_dataset_multiple(urls)
+	df = create_dataset_multiple(urls)
 
 	now = datetime.now()
 	time = now.strftime("%Y-%m-%d-%H-%M-%S")
 	df.to_csv("dataset/"+time)
-	print(f'Tiempo ejecucion: {time.time() - start}')
+	#print(f'Tiempo ejecucion: {time.time() - start}')
 
 elif args.method == "train":
 	if not args.dataset:

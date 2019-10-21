@@ -1,3 +1,4 @@
+import re
 from bs4 import BeautifulSoup
 import pandas as pd
 import concurrent.futures
@@ -103,6 +104,9 @@ def create_dataset_to_predict(url):
 
  
 def create_dataset(url):
+    df = pd.read_csv('dataset/cols.csv').drop(columns="Unnamed: 0")
+    client = df['Files'].values
+
     ##clear_output()
     main_array = []
     global count_iter
@@ -143,7 +147,7 @@ def create_dataset(url):
         except:
             print(url)
 
-
+    return df
 
 def create_dataset_multiple(urls):
     global count_iter 
