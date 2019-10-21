@@ -49,7 +49,7 @@ wp-admin/js/customize-controls.min.js
 
 Si nos descargamos esa versión y la anterior 4.7.4 y abrimos el archivo wp-includes/js/plupload/handlers.js:
 
-![Image of Yaktocat](images/1.png)
+<div style="text-align:center"><img src="images/1.png" /></div>
 
 Vemos que las líneas cambian en ese archivo. Habría que descargar el listado total de archivos que han sido modificados o añadidos de sde la versión 0 hasta la última y comprobar cuantas líneas tienen los archivos .js o .css
 
@@ -62,29 +62,29 @@ https://emetel.net/ versión 4.9.11
 https://www.be-sec.net/ versión 5.0.6
 ```
 
-![Image of Yaktocat](images/2.png)
+<div style="text-align:center"><img src="images/2.png" /></div>
 
 Haremos una comprobación más grande antes de seguir:
 En estas URLs tenemos 3 versiones que son iguales, y justamente da el mismo número de bytes en sus archivos:
 
-![Image of Yaktocat](images/3.png)
+<div style="text-align:center"><img src="images/3.png" /></div>
 
 Dado que la API de wappalyzer no saca muy bien las versiones, las sacaremos a mano buscando en el source code la etiqueta <meta> que contiene la versión usada:
 
-![Image of Yaktocat](images/4.png)
+<div style="text-align:center"><img src="images/4.png" /></div>
 
 Hay una web llamada PublicWWW que nos permite buscar determinado código en las webs, es decir podremos buscar webs que tengan una determinada versión de WordPress:
 
-![Image of Yaktocat](images/5.png)
+<div style="text-align:center"><img src="images/5.png" /></div>
 
 
 Una vez descargadas todas las URLs tendremos el siguiente numero de webs para cada versión:
 
-![Image of Yaktocat](images/6.png)
+<div style="text-align:center"><img src="images/6.png" /></div>
 
 Teniendo un total de 172.394 urls las cuales exportaremos a un csv:
 
-![Image of Yaktocat](images/7.png)
+<div style="text-align:center"><img src="images/7.png" /></div>
 
 
 
