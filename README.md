@@ -4,6 +4,8 @@ Some pages made in Wordpress, Joomla, Drupal, etc. do not offer version informat
 
 ⚠️ For now it only works with WordPress pages.
 
+📈 ACC: 89% (With 20000 urls dataset and randomforest algorithm)
+
 ## Quick start
 
 We use the model randomforestmodel.pkl:
