@@ -57,11 +57,6 @@ With python instead of counting the lines we will count the bytes of each .js or
 
 The first test emetel.net vs be-sec.net:
 
-```
-https://emetel.net/ | versión 4.9.11
-https://www.be-sec.net/ | versión 5.0.6
-```
-
 <p align="center"><img src="images/2.png" /></p>
 
 We will do a bigger check before continuing:
