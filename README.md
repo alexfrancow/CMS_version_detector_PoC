@@ -67,24 +67,24 @@ https://www.be-sec.net/ versión 5.0.6
 Haremos una comprobación más grande antes de seguir:
 En estas URLs tenemos 3 versiones que son iguales, y justamente da el mismo número de bytes en sus archivos:
 
-<div style="text-align:center"><img src="images/3.png" /></div>
+<p align="center"><img src="images/3.png" /></p>
 
 Dado que la API de wappalyzer no saca muy bien las versiones, las sacaremos a mano buscando en el source code la etiqueta <meta> que contiene la versión usada:
 
-<div style="text-align:center"><img src="images/4.png" /></div>
+<p align="center"><img src="images/4.png" /></p>
 
 Hay una web llamada PublicWWW que nos permite buscar determinado código en las webs, es decir podremos buscar webs que tengan una determinada versión de WordPress:
 
-<div style="text-align:center"><img src="images/5.png" /></div>
+<p align="center"><img src="images/5.png" /></p>
 
 
 Una vez descargadas todas las URLs tendremos el siguiente numero de webs para cada versión:
 
-<div style="text-align:center"><img src="images/6.png" /></div>
+<p align="center"><img src="images/6.png" /></p>
 
 Teniendo un total de 172.394 urls las cuales exportaremos a un csv:
 
-<div style="text-align:center"><img src="images/7.png" /></div>
+<p align="center"><img src="images/7.png" /></p>
 
 
 
