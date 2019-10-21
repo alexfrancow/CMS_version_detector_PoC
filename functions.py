@@ -71,7 +71,7 @@ def get_bytes(url):
 
 
 def create_dataset_to_predict(url):
-    df = pd.read_csv('files.csv').drop(columns="Unnamed: 0")
+    df = pd.read_csv('dataset/cols.csv').drop(columns="Unnamed: 0")
     client = df['Files'].values
 
     main_array = []
