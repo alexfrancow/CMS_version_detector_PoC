@@ -2,6 +2,26 @@
 
 Algunas páginas de Wordpress, Joomla, Drupal, etc. no ofrecen información de la versión por ningún lado, ni con herramientas somos capaces de sacar una versión, con esta herramienta gracias a los algoritmos de Machine Learning se podrá detectar una versión de cualquier CMS en base a una serie de clases.
 
+## Quick start
+
+Usamos el modelo randomforestmodel.pkl:
+
+```
+$ python3 ml-wpver.py -m test -u https://emetel.net/
+```
+
+Generamos un nuevo dataset:
+
+```
+$ python3 ml-wpver.py -gd 10000
+```
+
+Generamos y entrenamos un nuevo modelo (se va a llamar randomforestmodel.pkl):
+
+```
+$ python3 ml-wpver.py -m train .csv
+```
+
 
 ## Dataset
 
@@ -173,18 +193,4 @@ df = pd.DataFrame(columns=client)
 create_dataset_to_predict("https://www.cloudways.com/blog/creating-custom-page-template-in-wordpress/")
 X = df.iloc[:, 0:-1].values
 model.predict(X)
-```
-
-## Usage
-
-Usamos el modelo default:
-
-```
-$ python3 ml-wpver.py -m test -u https://emetel.net/
-```
-
-Entrenamos y generamos un nuevo modelo:
-
-```
-$ python3 ml-wpver.py -m train -gd 10000
 ```
