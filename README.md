@@ -124,39 +124,56 @@ create_dataset_multiple(urls)
 
 ## Training process
 
-Separaremos nuestro dataset en train(80%) y test(20%):
+Cargamos y separaramos nuestro dataset en train(70%) y test(30%):
 
 ```python
-# Using Skicit-learn to split data into training and testing sets
-from sklearn.model_selection import train_test_split
+df = pd.read_csv('20000.csv')
+X = df.iloc[:, 1:-1].values
+y = df.iloc[:, -1].values
 
-# Split the data into training and testing sets
-train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size = 0.25, random_state = 42)
+from sklearn.model_selection import train_test_split
+# 70% training 30% test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 ```
 
 Una vez separado el dataset, entrenaremos a nuestro modelo.
 
 ```python
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
 
-# Instantiate model with 1000 decision trees
-rf = RandomForestRegressor(n_estimators = 1000, random_state = 42)
-
-# Train the model on training data
-rf.fit(train_features, train_labels);
+model = RandomForestClassifier(n_estimators=10, criterion='entropy', random_state=42)
+model.fit(X_train, y_train)
 ```
 
-Y haremos las predicciones:
+Veremos el accuracy:
 
 ```python
-# Use the forest's predict method on the test data
-predictions = rf.predict(test_features)
+from sklearn.model_selection import cross_val_score
 
-# Calculate the absolute errors
-errors = abs(predictions - test_labels)# Print out the mean absolute error (mae)
-print('Mean Absolute Error:', round(np.mean(errors), 2), 'degrees.')
+y_pred = model.predict(X_test)
+from sklearn import metrics
+print("Accuracy Random Forest:",metrics.accuracy_score(y_test, y_pred))
+scores = cross_val_score(model, X_test, y_test, cv=5)
+print("Accuracy Cross val score Random Forest: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+
 ```
 
+Guardamos nuestro modelo:
+
+```python
+from sklearn.externals import joblib
+joblib.dump(model, 'randomforestmodel.pkl') 
+```
+
+Hacemos las prediciones:
+
+```python
+# Creamos un dataframe en blanco
+df = pd.DataFrame(columns=client)
+create_dataset_to_predict("https://www.cloudways.com/blog/creating-custom-page-template-in-wordpress/")
+X = df.iloc[:, 0:-1].values
+model.predict(X)
+```
 
 ## Usage
 
