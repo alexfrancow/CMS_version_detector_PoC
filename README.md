@@ -9,19 +9,19 @@ Some pages made in Wordpress, Joomla, Drupal, etc. do not offer version informat
 We use the model randomforestmodel.pkl:
 
 ```
-$ python3 ml-wpver.py -m test -u https://emetel.net/
+$ python3 deepCMSvdetector.py -m test -u https://emetel.net/
 ```
 
 To generate a new dataset:
 
 ```
-$ python3 ml-wpver.py -gd 10000
+$ python3 deepCMSvdetector.py -gd 10000
 ```
 
 To generate and train a new model (it'll be called randomforestmodel.pk1) and specify the dataset:
 
 ```
-$ python3 ml-wpver.py -m train .csv
+$ python3 deepCMSvdetector.py -m train .csv
 ```
 
 
