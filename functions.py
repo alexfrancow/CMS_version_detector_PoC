@@ -91,7 +91,6 @@ def create_dataset_to_predict(url):
             main_array.append(b)
 
     main_array.append(version)
-    print(main_array)
     df = pd.DataFrame(columns=client)
     if len(main_array) == 46:
         try:

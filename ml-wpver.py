@@ -1,3 +1,7 @@
+import warnings
+from sklearn.exceptions import DataConversionWarning
+warnings.filterwarnings(action='ignore', category=DataConversionWarning)
+
 import sys
 from functions import *
 import requests
@@ -26,8 +30,6 @@ parser.add_argument('-m', '--method', help='train or test', type=str, action="st
 parser.add_argument('-gd', '--gendataset', help='Generate a new dataset specifying how much urls do you want ej: --gen-dataset 1000', type=int, action="store")
 parser.add_argument('-u', '--url', help='Introduce an IP address to scan', type=str, action="store")
 args = parser.parse_args()
-
-print(args.gendataset)
 
 if args.method == "train":
 	if args.gendataset:
@@ -66,12 +68,13 @@ elif args.method == "test":
 		sys.exit()
 
 	model = joblib.load('randomforestmodel.pkl')
+	print(model)
 	X = create_dataset_to_predict(args.url)
-	model.predict(X)
+	pred = model.predict(X)
+	print("[*] WordPress Version: "+pred[0])
 
 else:
     print("Method not valid")
 
-print(args.accumulate(args.integers))
 
 
