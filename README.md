@@ -10,13 +10,13 @@ Usamos el modelo randomforestmodel.pkl:
 $ python3 ml-wpver.py -m test -u https://emetel.net/
 ```
 
-Generamos un nuevo dataset:
+Para generar un nuevo dataset:
 
 ```
 $ python3 ml-wpver.py -gd 10000
 ```
 
-Generamos y entrenamos un nuevo modelo (se va a llamar randomforestmodel.pkl):
+Para generar y entrenar un nuevo modelo (se va a llamar randomforestmodel.pkl):
 
 ```
 $ python3 ml-wpver.py -m train .csv
