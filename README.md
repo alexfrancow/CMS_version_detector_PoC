@@ -62,7 +62,7 @@ https://emetel.net/ versión 4.9.11
 https://www.be-sec.net/ versión 5.0.6
 ```
 
-<div style="text-align:center"><img src="images/2.png" /></div>
+<p align="center"><img src="images/2.png" /></p>
 
 Haremos una comprobación más grande antes de seguir:
 En estas URLs tenemos 3 versiones que son iguales, y justamente da el mismo número de bytes en sus archivos:
