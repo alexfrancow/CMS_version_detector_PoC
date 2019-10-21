@@ -1,22 +1,22 @@
-# ML-wpver
+# deepCMSvdetector
 
-Algunas páginas de Wordpress, Joomla, Drupal, etc. no ofrecen información de la versión por ningún lado, ni con herramientas somos capaces de sacar una versión, con esta herramienta gracias a los algoritmos de Machine Learning se podrá detectar una versión de cualquier CMS en base a una serie de clases.
+Some pages made in Wordpress, Joomla, Drupal, etc. do not offer version information anywhere, or with tools we are able to get a version, with this tool thanks to the algorithms of Machine Learning you can detect a version of any CMS based on a series of classes.
 
 ## Quick start
 
-Usamos el modelo randomforestmodel.pkl:
+We use the model randomforestmodel.pkl:
 
 ```
 $ python3 ml-wpver.py -m test -u https://emetel.net/
 ```
 
-Para generar un nuevo dataset:
+To generate a new dataset:
 
 ```
 $ python3 ml-wpver.py -gd 10000
 ```
 
-Para generar y entrenar un nuevo modelo (se va a llamar randomforestmodel.pkl) y especificamos el dataset:
+To generate and train a new model (it'll be called randomforestmodel.pk1) and specify the dataset:
 
 ```
 $ python3 ml-wpver.py -m train .csv
@@ -25,9 +25,9 @@ $ python3 ml-wpver.py -m train .csv
 
 ## Dataset
 
-Las caracterísiticas de nuestro dataset serán los archivos de los que se compone el CMS WordPress, no todos.
+The classes of our dataset will be the size of the files that the WordPress CMS is made of, not all.
 
-Si nos vamos a la web: https://codex.wordpress.org/Current_events veremos los archivos que cambiaron en cada versión.
+If we go to the: https://codex.wordpress.org/Current_events We'll see the files that changed in each version.
 
 ```
 Ej:
@@ -47,65 +47,63 @@ wp-admin/js/updates.min.js
 wp-admin/js/customize-controls.min.js
 ```
 
-Si nos descargamos esa versión y la anterior 4.7.4 y abrimos el archivo wp-includes/js/plupload/handlers.js:
+If we download that version and the previous 4.7.4 and open the file: wp-includes/js/plupload/handlers.js
 
 <p align="center"><img src="images/1.png" /></p>
 
-Vemos que las líneas cambian en ese archivo. Habría que descargar el listado total de archivos que han sido modificados o añadidos de sde la versión 0 hasta la última y comprobar cuantas líneas tienen los archivos .js o .css
+We see the lines change in that file. It would be necessary to download the total list of files that have been modified or added from version 0 to the last one and check how many lines the .js or .css files have
 
-Con python en lugar de contar las líneas vamos a contar los bytes de cada archivo .js o .css, solo los del lado del cliente ya que los .php no los vamos a poder visitar.
+With python instead of counting the lines we will count the bytes of each .js or .css file, only those on the client side since the .php will not be able to visit them.
 
-Primera prueba emetel.net vs be-sec.net:
+The first test emetel.net vs be-sec.net:
 
 ```
-https://emetel.net/ versión 4.9.11
-https://www.be-sec.net/ versión 5.0.6
+https://emetel.net/ | versión 4.9.11
+https://www.be-sec.net/ | versión 5.0.6
 ```
 
 <p align="center"><img src="images/2.png" /></p>
 
-Haremos una comprobación más grande antes de seguir:
-En estas URLs tenemos 3 versiones que son iguales, y justamente da el mismo número de bytes en sus archivos:
+We will do a bigger check before continuing:
+In these URLs we have 3 versions that are equal, and just give the same number of bytes in your files:
 
 <p align="center"><img src="images/3.png" /></p>
 
-Dado que la API de wappalyzer no saca muy bien las versiones, las sacaremos a mano buscando en el source code la etiqueta <meta> que contiene la versión usada:
+Since the wappalyzer API does not take the versions very well, we will take them out by hand looking in the source code for the <meta> tag that contains the version used:
 
 <p align="center"><img src="images/4.png" /></p>
 
-Hay una web llamada PublicWWW que nos permite buscar determinado código en las webs, es decir podremos buscar webs que tengan una determinada versión de WordPress:
+There is a website called PublicWWW that allows us to search for certain code on the websites, that is, we can search for websites that have a certain version of WordPress:
 
 <p align="center"><img src="images/5.png" /></p>
 
-
-Una vez descargadas todas las URLs tendremos el siguiente numero de webs para cada versión:
+Once all the URLs have been downloaded, we will have the following number of websites for each version:
 
 <p align="center"><img src="images/6.png" /></p>
 
-Teniendo un total de 172.394 urls las cuales exportaremos a un csv:
+Having a total of 172,394 urls which we will export to a csv:
 
 <p align="center"><img src="images/7.png" /></p>
 
 
-
 ## Multi-Class Classification algorithms
 
-Del mismo modo que la clasificación binaria (binary classification) implica predecir si algo es de una de dos clases (por ejemplo, "negro" o "blanco", "muerto" o "vivo", etc.), los problemas multiclase (Multi-class classification) implican clasificar algo en una de las N clases (por ejemplo, "rojo", "Blanco" o "azul", etc.)
+In the same way that the binary classification (binary classification) implies predicting if something is of one of two classes (for example, "black" or "white", "dead" or "alive", etc.), multiclass problems (Multi -class classification) involve classifying something into one of the N classes (for example, "red", "White" or "blue", etc.)
 
-Los ejemplos comunes incluyen la clasificación de imágenes (es un gato, perro, humano, etc.) o el reconocimiento de dígitos escritos a mano (clasificar una imagen de un número escrito a mano en un dígito de 0 a 9).
-La librería scikit learn ofrece una serie de algoritmos para Multi-Class classification, algunos como:
+Common examples include the classification of images (it is a cat, dog, human, etc.) or the recognition of handwritten digits (classifying an image of a handwritten number into a digit from 0 to 9).
+The scikit learn library offers a series of algorithms for Multi-Class classification, some such as:
 -	K-nearest-neighbours (KNN).
 -	Random Forest
 
 
 ## Dataset generation
 
+We will generate our dataset, for each URL we will make 41 requests (the total number of classes), to save all the bytes. This will take us a long time since there are many URLs that we need, for this we will make simultaneous requests.
 
-Crearemos una función para el multiprocesado de URLS, sino será infinito este proceso.
 
-Como esto es un programa I/O, es decir el cuello de botella se basará en lo que tarde en visitar esa página y no dependerá tanto del procesador usaremos el método de threading (https://realpython.com/python-concurrency/):
+As this is an I / O program, that is, the bottleneck will be based on what it takes to visit that page and it will not depend so much on the processor we will use the threading method (https://realpython.com/python-concurrency/) :
 
-![Image of Yaktocat](images/10.png)
+<p align="center"><img src="images/10.png" /></p>
 
 ```python
 def get_bytes(url):
@@ -144,7 +142,7 @@ create_dataset_multiple(urls)
 
 ## Training process
 
-Cargamos y separaramos nuestro dataset en train(70%) y test(30%):
+We load and separate our dataset by train (70%) and test (30%):
 
 ```python
 df = pd.read_csv('20000.csv')
@@ -156,7 +154,7 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 ```
 
-Una vez separado el dataset, entrenaremos a nuestro modelo.
+Once the dataset is separated, we will train our model.
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
@@ -165,7 +163,7 @@ model = RandomForestClassifier(n_estimators=10, criterion='entropy', random_stat
 model.fit(X_train, y_train)
 ```
 
-Veremos el accuracy:
+We will see the accuracy:
 
 ```python
 from sklearn.model_selection import cross_val_score
@@ -178,14 +176,14 @@ print("Accuracy Cross val score Random Forest: %0.2f (+/- %0.2f)" % (scores.mean
 
 ```
 
-Guardamos nuestro modelo:
+We save our model:
 
 ```python
 from sklearn.externals import joblib
 joblib.dump(model, 'randomforestmodel.pkl') 
 ```
 
-Hacemos las prediciones:
+We make the predictions:
 
 ```python
 # Creamos un dataframe en blanco
