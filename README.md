@@ -156,3 +156,18 @@ predictions = rf.predict(test_features)
 errors = abs(predictions - test_labels)# Print out the mean absolute error (mae)
 print('Mean Absolute Error:', round(np.mean(errors), 2), 'degrees.')
 ```
+
+
+## Usage
+
+Uses the default's model:
+
+```
+$ python3 ml-wpver.py -m test -u https://emetel.net/
+```
+
+Train and generate a new model:
+
+```
+$ python3 ml-wpver.py -m train -gd 10000
+```
