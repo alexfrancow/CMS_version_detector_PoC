@@ -177,13 +177,13 @@ model.predict(X)
 
 ## Usage
 
-Uses the default's model:
+Usamos el modelo default:
 
 ```
 $ python3 ml-wpver.py -m test -u https://emetel.net/
 ```
 
-Train and generate a new model:
+Entrenamos y generamos un nuevo modelo:
 
 ```
 $ python3 ml-wpver.py -m train -gd 10000
