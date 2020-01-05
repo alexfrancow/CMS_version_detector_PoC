@@ -35,9 +35,14 @@ $ python3 deepCMSvdetector.py -gd 10000
 To generate and train a new model (it'll be called randomforestmodel.pk1) and specify the dataset:
 
 ```
-$ python3 deepCMSvdetector.py -m train <dataset.csv>
+$ python3 deepCMSvdetector.py -m train -d <dataset.csv>
 ```
 
+Help:
+
+```
+$ python3 deepCMSvdetector.py --help
+```
 
 ## Dataset
 
