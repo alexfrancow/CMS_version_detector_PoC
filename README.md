@@ -1,6 +1,6 @@
 # deepCMSvdetector
 
-Some pages made in Wordpress, Joomla, Drupal, etc. do not offer version information anywhere, or with tools we are able to get a version, with this tool thanks to the algorithms of Machine Learning you can detect a version of any CMS based on a series of classes.
+Some pages made in Wordpress, Joomla, Drupal, etc. do not offer version information anywhere. With this tool thanks to the algorithms of Machine Learning you can detect a version of any CMS based on a series of classes.
 
 ⚠️ For now it only works with WordPress pages.
 
